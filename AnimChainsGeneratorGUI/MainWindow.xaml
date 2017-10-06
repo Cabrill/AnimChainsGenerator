@@ -17,130 +17,187 @@
     <Window.Resources>
         <sys:Double x:Key="fixedWidth">550</sys:Double>
     </Window.Resources>
-    <DockPanel >
-        <Grid DockPanel.Dock="Top" Margin="6" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition />
-                <ColumnDefinition Width="20" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="20" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="20" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="Auto"/>
 
-                <RowDefinition Height="36" />
-                <RowDefinition Height="36"/>
+    <TabControl>
+        <TabItem Header="From parameteres (for existing sprite sheet)">
+            <DockPanel >
+                <Grid DockPanel.Dock="Top" Margin="6" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto"/>
 
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36"/>
 
-            <Button Content="Load project file" Click="ButLoadProjectFile_Click" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-            <TextBlock Text="SpriteSheet cell size" Grid.Row="2" />
-            <xctk:IntegerUpDown Grid.Column="2" 
+                    <Button Content="Load project file" Click="ButLoadProjectFile_Click" />
+
+                    <TextBlock Text="SpriteSheet cell size" Grid.Row="2" />
+                    <xctk:IntegerUpDown Grid.Column="2" 
                 Minimum="1" 
-                Value="{Binding Project.SheetCellSize.Width}" DefaultValue="{Binding Project.SheetCellSize.Width, Mode=OneTime}" DisplayDefaultValueOnEmptyText="True" Grid.Row="2" />
-            <xctk:IntegerUpDown Grid.Column="4" 
+                Value="{Binding ProjectForParams.SheetCellSize.Width}" DefaultValue="{Binding ProjectForParams.SheetCellSize.Width, Mode=OneTime}" DisplayDefaultValueOnEmptyText="True" Grid.Row="2" />
+                    <xctk:IntegerUpDown Grid.Column="4" 
                 Minimum="1" 
-                Value="{Binding Project.SheetCellSize.Height}" DefaultValue="{Binding Project.SheetCellSize.Height, Mode=OneTime}"  DisplayDefaultValueOnEmptyText="True" Grid.Row="2" />
+                Value="{Binding ProjectForParams.SheetCellSize.Height}" DefaultValue="{Binding ProjectForParams.SheetCellSize.Height, Mode=OneTime}"  DisplayDefaultValueOnEmptyText="True" Grid.Row="2" />
 
-            <TextBlock Grid.Row="4" Text="Number of rotations" />
-            <xctk:IntegerUpDown Grid.Row="4" Grid.Column="2" Minimum="1" Value="{Binding Project.Rotations}" />
+                    <TextBlock Grid.Row="4" Text="Number of rotations" />
+                    <xctk:IntegerUpDown Grid.Row="4" Grid.Column="2" Minimum="1" Value="{Binding ProjectForParams.Rotations}" />
 
-            <TextBlock Grid.Row="6" Text="SpriteSheet image" />
-            <TextBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3" MaxLines="1" Text="{Binding Project.SheetFilePath}" />
+                    <TextBlock Grid.Row="6" Text="SpriteSheet image" />
+                    <TextBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3" MaxLines="1" Text="{Binding ProjectForParams.SheetFilePath}" />
 
-            <TextBlock Grid.Row="8" Text="Output achx" />
-            <TextBox Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3" MaxLines="1" Text="{Binding Project.OutputAchxFilePath}" />
+                    <TextBlock Grid.Row="8" Text="Output achx" />
+                    <TextBox Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3" MaxLines="1" Text="{Binding ProjectForParams.OutputAchxFilePath}" />
 
-            <TextBlock Grid.Row="10">
+                    <TextBlock Grid.Row="10">
                 Add Relative position<LineBreak />
                 for all anims frames
-            </TextBlock>
-            <xctk:DoubleUpDown Grid.Row="10" Grid.Column="2" VerticalAlignment="Top"
+                    </TextBlock>
+                    <xctk:DoubleUpDown Grid.Row="10" Grid.Column="2" VerticalAlignment="Top"
                                 Minimum="0" 
-                Value="{Binding Project.FramesOffset.X}" DefaultValue="{Binding Project.FramesOffset.X, Mode=OneTime}" DisplayDefaultValueOnEmptyText="True" />
-            <xctk:DoubleUpDown Grid.Row="10" Grid.Column="4" VerticalAlignment="Top"
+                Value="{Binding ProjectForParams.FramesOffset.X}" DefaultValue="{Binding ProjectForParams.FramesOffset.X, Mode=OneTime}" DisplayDefaultValueOnEmptyText="True" />
+                    <xctk:DoubleUpDown Grid.Row="10" Grid.Column="4" VerticalAlignment="Top"
                                 Minimum="0" 
-                Value="{Binding Project.FramesOffset.Y}" DefaultValue="{Binding Project.FramesOffset.Y, Mode=OneTime}" DisplayDefaultValueOnEmptyText="True" />
+                Value="{Binding ProjectForParams.FramesOffset.Y}" DefaultValue="{Binding ProjectForParams.FramesOffset.Y, Mode=OneTime}" DisplayDefaultValueOnEmptyText="True" />
 
-            <Button Grid.Row="11" Grid.ColumnSpan="3" Content="Generate achx" Margin="102,20" Padding="20,6" HorizontalAlignment="Center" 
-                    Click="ButGenerate_Click" Grid.RowSpan="2" />
-            <CheckBox Name="CheckBoxOpenAchx" Grid.Row="11" Grid.Column="4" Content="Open created achx" VerticalAlignment="Center" />
-            <CheckBox Name="CheckBoxSaveProject" Grid.Row="12" Grid.Column="4" Content="Save project file" VerticalAlignment="Center" />
+                    <Button Grid.Row="11" Grid.ColumnSpan="3" Content="Generate achx" Margin="0,20" Padding="20,6" HorizontalAlignment="Center" 
+                            Click="ButGenerateFromParameters_Click" Grid.RowSpan="2" />
+                    <CheckBox Name="CheckBoxOpenAchx" Grid.Row="11" Grid.Column="4" Content="Open created achx" VerticalAlignment="Center" />
+                    <CheckBox Name="CheckBoxSaveProject" Grid.Row="12" Grid.Column="4" Content="Save project file" VerticalAlignment="Center" />
 
-            <TextBlock Grid.Row="13" Text="Animation definitions" VerticalAlignment="Bottom" />
-            <Button Grid.Row="13" Grid.Column="4" Content="Add definition" HorizontalAlignment="Right"
-                    Click="ButAddAnimDef_Click" />
-        </Grid>
+                    <TextBlock Grid.Row="13" Text="Animation definitions" VerticalAlignment="Bottom" />
+                    <Button Grid.Row="13" Grid.Column="4" Content="Add definition" HorizontalAlignment="Right"
+                            Click="ButAddAnimDef_Click" />
+                </Grid>
 
-        <!--<Button DockPanel.Dock="Top" Content="Add Anim definition" HorizontalAlignment="Right" Margin="0,-15,6,0" />-->
+                <!--<Button DockPanel.Dock="Top" Content="Add Anim definition" HorizontalAlignment="Right" Margin="0,-15,6,0" />-->
 
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
                       Background="{StaticResource PitchGray}" >
 
-            <ItemsControl ItemsSource="{Binding Project.AnimDefinitons}" >
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border Background="{StaticResource BGBlueish}" Margin="2" >
-                            <Grid MinHeight="32" Margin="6,10" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="10" />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="10" />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="10" />
-                                    <ColumnDefinition />
+                    <ItemsControl ItemsSource="{Binding ProjectForParams.AnimDefinitons}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{StaticResource BGBlueish}" Margin="2" >
+                                    <Grid MinHeight="32" Margin="6,10" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition />
 
-                                    <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="10" />
 
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="10" />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="10" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="10" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="10" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
 
-                                <TextBlock Text="Starts at horizontal cell" />
-                                <xctk:IntegerUpDown Grid.Column="2" Minimum="1" Value="{Binding CellXstartIndex}" />
+                                        <TextBlock Text="Starts at horizontal cell" />
+                                        <xctk:IntegerUpDown Grid.Column="2" Minimum="1" Value="{Binding CellXstartIndex}" />
 
-                                <TextBlock Grid.Column="4" Text="vertical cell" />
-                                <xctk:IntegerUpDown Grid.Column="6" Minimum="1" Value="{Binding CellYstartIndex}" />
+                                        <TextBlock Grid.Column="4" Text="vertical cell" />
+                                        <xctk:IntegerUpDown Grid.Column="6" Minimum="1" Value="{Binding CellYstartIndex}" />
 
-                                <TextBlock Grid.Column="8" Text="No of frames" />
-                                <xctk:IntegerUpDown Grid.Column="10" Minimum="1" Value="{Binding FramesPerRotation}" />
+                                        <TextBlock Grid.Column="8" Text="No of frames" />
+                                        <xctk:IntegerUpDown Grid.Column="10" Minimum="1" Value="{Binding FramesPerRotation}" />
 
-                                <TextBlock Grid.Row="2" Text="Anim name" />
-                                <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="9" MaxLines="1" Text="{Binding AnimName}" />
+                                        <TextBlock Grid.Row="2" Text="Anim name" />
+                                        <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="9" MaxLines="1" Text="{Binding AnimName}" />
 
-                                <Button Grid.Column="12" Grid.RowSpan="3" Content="X" Padding="6" 
+                                        <Button Grid.Column="12" Grid.RowSpan="3" Content="X" Padding="6" 
                                         Tag="{Binding}"
                                         Click="ButRemoveAnimDef_Click" />
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
 
-            </ItemsControl>
+                    </ItemsControl>
 
-        </ScrollViewer>
+                </ScrollViewer>
 
-    </DockPanel>
+            </DockPanel>
+        </TabItem>
+
+        <TabItem Header="From image sequences (creating sprite sheet)">
+            <Grid DockPanel.Dock="Top" Margin="6" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="1" Text="Input dir" />
+                <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" MaxLines="1" Text="{Binding ProjectForImgSequences.InputDir}" />
+
+                <TextBlock Grid.Row="3" Text="Output dir" />
+                <TextBox Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" MaxLines="1" Text="{Binding ProjectForImgSequences.OutputDir}" />
+
+                <TextBlock Grid.Row="5" Text="Result sprite sheet file name" />
+                <TextBox Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" MaxLines="1" Text="{Binding ProjectForImgSequences.SpriteSheetFileName}" />
+
+                <TextBlock Grid.Row="7" Text="Result achx file name" />
+                <TextBox Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3" MaxLines="1" Text="{Binding ProjectForImgSequences.AchxFileName}" />
+
+                <TextBlock Text="Max sprite sheet width" Grid.Row="9" />
+                <xctk:IntegerUpDown Grid.Column="2" Grid.Row="9" 
+                                    Minimum="32" 
+                                    Value="{Binding ProjectForImgSequences.MaxSpriteSheetWidth}" 
+                                    DefaultValue="4096" 
+                                    DisplayDefaultValueOnEmptyText="True" />
+
+                <Button Grid.Row="11" Grid.ColumnSpan="3" 
+                        Content="Generate sheet and achx" Margin="0,20" Padding="20,6" HorizontalAlignment="Center" 
+                        Click="ButGenerateFromImgSequences_Click" />
+                <CheckBox Name="CheckBoxOpenAchx2" Grid.Row="11" Grid.Column="4" Content="Open created achx" VerticalAlignment="Center" 
+                          IsChecked="{Binding ProjectForImgSequences.OpenCreated}"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+    
 </Window>

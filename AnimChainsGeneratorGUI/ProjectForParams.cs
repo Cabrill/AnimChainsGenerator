@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AnimChainsGenerator
 {
-    public class Project : INotifyPropertyChanged
+    public class ProjectForParams : INotifyPropertyChanged
     {
         #region    --- INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
@@ -33,8 +33,8 @@ namespace AnimChainsGenerator
         }
         #endregion --- INotifyPropertyChanged implementation END
 
-        private Size _SheetCellSize = new Size { Width = 32, Height = 32 };
-        public Size SheetCellSize
+        private SizeUint _SheetCellSize = new SizeUint { Width = 32, Height = 32 };
+        public SizeUint SheetCellSize
         {
             get { return _SheetCellSize; }
             set { SetField(ref _SheetCellSize, value, "SheetCellSize"); }

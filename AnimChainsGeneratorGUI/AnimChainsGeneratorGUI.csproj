@@ -64,6 +64,7 @@
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -95,7 +96,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Project.cs" />
+    <Compile Include="ProjectForImgSequences.cs" />
+    <Compile Include="ProjectForParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
