@@ -196,11 +196,11 @@ namespace AnimChainsGenerator
                 )
             );*/
 
-            Debug.WriteLine(
-                "\n------- framesData -------\n"
-                +
-                Diag.PrintCollectionToString(framesData)
-            );
+            //Debug.WriteLine(
+            //    "\n------- framesData -------\n"
+            //    +
+            //    Diag.PrintCollectionToString(framesData)
+            //);
 
 
             // -- Create SpriteSheet image
@@ -209,14 +209,14 @@ namespace AnimChainsGenerator
 
             Debug.WriteLine($"   _LayoutSprites() calculated spriteSheetSize: {spriteSheetSize.Width},{spriteSheetSize.Height}");
 
-            Debug.WriteLine(
-                "\n------- animGroups -------\n"
-                +
-                Diag.PrintCollectionToString(
-                    animGroups,
-                    group => Diag.PrintCollection(group)
-                )
-            );
+            //Debug.WriteLine(
+            //    "\n------- animGroups -------\n"
+            //    +
+            //    Diag.PrintCollectionToString(
+            //        animGroups,
+            //        group => Diag.PrintCollection(group)
+            //    )
+            //);
             //animList = null;
             //spriteSheet = null;
 
@@ -340,8 +340,8 @@ namespace AnimChainsGenerator
 
                 pixelFormat = frame.Format;
 
-                imagePixelSize.Height = frame.PixelWidth;
-                imagePixelSize.Width = frame.PixelHeight;
+                imagePixelSize.Height = frame.PixelHeight;
+                imagePixelSize.Width = frame.PixelWidth;
             }
 
             if (pixelFormat.BitsPerPixel != 32)
@@ -365,11 +365,14 @@ namespace AnimChainsGenerator
                 maxSpriteSheetWidth = Math.Max(maxSpriteSheetWidth, frame.PixelSize.Width);
             }
 
+            int highestFrameHeight = 0;
+
             foreach (var frame in framesData)
             {
                 frame.SheetPos = new Point();
 
                 newLineWidth = lineWidth + frame.PixelSize.Width;
+                highestFrameHeight = Math.Max(frame.PixelSize.Height, highestFrameHeight);
 
                 if (newLineWidth > maxSpriteSheetWidth)
                 {
@@ -381,7 +384,10 @@ namespace AnimChainsGenerator
                     //lineWidth = 0
                     //lineHight = 0;
                     lineWidth = frame.PixelSize.Width;
-                    lineHight = frame.PixelSize.Height;
+                    lineHight = highestFrameHeight;
+
+                    //Reset the highest frame height seen
+                    highestFrameHeight = 0;
 
                     // lay the frame on the new line
                     //frame.SheetPos.X = 0;
